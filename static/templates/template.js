@@ -207,4 +207,17 @@ switchButtonClick2 = function () {
         }, 2100);
     }
 }
+function w3_open() {
+  document.getElementsByClassName("menu-button")[0].style.opacity = "0";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById(    "content").style = "transform: scaleX(0.85) translate(20vh)";
+
+
+}
+
+function w3_close() {
+  document.getElementsByClassName("menu-button")[0].style.opacity = "1";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById(    "content").style = "";
+}
 

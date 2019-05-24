@@ -9,12 +9,23 @@
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="{% static 'templates/template.css' %}">
     <title>Regas Project</title>
-
 </head>
 <body>
-    <div class="button-form">
+    <!-- Sidebar -->
+    <div class="w3-sidebar w3-bar-block" style="display:none" id="mySidebar">
+      <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+        {% for sensor in sensors %}
+            <a href="../sensors/{{ sensor.pk }}" class="w3-bar-item w3-button">{{ sensor.name }}</a>
+            <hr>
+        {% endfor %}
+    </div>
+    <div id="content">
+        <div class="button-form">
+        <button class="menu-button" onclick="w3_open()">☰</button>
+
         <p>Dark Mode</p>
         <div class="onoffswitch">
             <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked onclick="switchButtonClick()">
@@ -24,11 +35,11 @@
             </label>
         </div>
     </div>
-    <div class="title colorSwitch">
-        <h1 id="sensorName"></h1>
+        <div class="title colorSwitch">
+        <h1 id="sensorName">{{ sensor.name }}</h1>
         <div id="onlinePoint" ></div>
     </div>
-    <div class="dashboard">
+        <div class="dashboard">
          <div class="temperature-section colorSwitch" data-toggle="modal" data-target="#tempGraphModal">
              <h3>Temperature</h3>
              <svg id="animated"  viewbox="0 0 100 100">
@@ -53,11 +64,7 @@
             </svg>
         </div>
     </div>
-
-{#    <div class="temp-section-graph" id="humGraph">#}
-{#        {{ div2 | safe }}#}
-{#    </div>#}
-    <div class="modal fade" id="tempGraphModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal fade" id="tempGraphModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -77,7 +84,7 @@
         </div>
       </div>
     </div>
-    <div class="button-form">
+        <div class="button-form">
         <p>Split Graphs</p>
         <div class="onoffswitch">
             <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="splitGraphs" checked onclick="switchButtonClick2()">
@@ -87,18 +94,22 @@
             </label>
         </div>
     </div>
-    <div id="chart_div" class="googleChart"></div>
-    <div id="chart_div2" class="googleChart"></div>
-    <div id="chart_tot" class="googleChart chart_totClass"></div>
+        <div id="chart_div" class="googleChart"></div>
+        <div id="chart_div2" class="googleChart"></div>
+        <div id="chart_tot" class="googleChart chart_totClass"></div>
+    </div>
+
+
+{#    <div class="temp-section-graph" id="humGraph">#}
+{#        {{ div2 | safe }}#}
+{#    </div>#}
+
 </body>
 <script src="http://cdn.pydata.org/bokeh/release/bokeh-1.1.0.min.js"></script>
 <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-1.1.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="{% static 'templates/template.js'%}"></script>
 
 </html>

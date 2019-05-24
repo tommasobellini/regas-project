@@ -21,5 +21,5 @@ from RegasProject.settings import MEDIA_URL, MEDIA_ROOT
 from sensors import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('sensors/', views.SensorView)
+    path('sensors/<int:pk>', views.SensorView)
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
