@@ -1,0 +1,285 @@
+body {
+    color: white;
+    margin: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    background-image: url("../../media/images/background_dark.jpg") ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'EB Garamond', serif;
+    animation: 5s appearAnimation;
+}
+.title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom:50px;
+    padding-top:50px;
+    margin-bottom: 15px;
+    animation: 1s vibeAnimation 3s;
+}
+.dashboard {
+    display: flex;
+}
+.temperature-section, .humidity-section{
+    width: 100%;
+    height: 50vh;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    animation: 3s fadeInDown, 1s vibeAnimation 3s;
+}
+.temperature-section:hover, .humidity-section:hover, .temp-section-graph:hover, .title:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.temp-section-graph{
+    animation: 3s fadeInUp;
+}
+.temperature-section >div , .humidity-section > div{
+    margin: auto;
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    display: flex;
+    border: 10px solid black;
+}
+.realtime-value{
+    animation: animateColor 1s;
+    background-color: lightgreen;
+    margin:auto;
+}
+
+@keyframes appearAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes disappearAnimation {
+    to {
+        display: unset;
+    }
+}
+@keyframes displayAppear {
+    from {
+        display: block;
+        transform: translateY(-150px);
+        opacity: 0;
+    }
+    to {
+        display: block;
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes vibeAnimation {
+    0% {
+        transform: rotateZ(0);
+    }
+    25%{
+        transform: rotateZ(0.5deg);
+
+    }
+    50%{
+        transform: rotateZ(-0.5deg);
+
+    }
+    75%{
+        transform: rotateZ(0.5deg);
+
+    }
+    100% {
+        transform: rotateZ(0);
+    }
+}
+@keyframes vibeAnimation2 {
+    0% {
+        transform: rotateZ(0);
+    }
+    25%{
+        transform: rotateZ(0.5deg);
+
+    }
+    50%{
+        transform: rotateZ(-0.5deg);
+
+    }
+    75%{
+        transform: rotateZ(0.5deg);
+
+    }
+    100% {
+        transform: rotateZ(0);
+    }
+}
+@keyframes fadeInUp {
+    from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    }
+    to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+}
+@keyframes fadeInDown {
+    from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    }
+
+    to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+}
+@keyframes pullBox {
+    from {
+    transform: scale(1);
+
+    }
+    to {
+    transform: scale(1.05);
+    }
+}
+@keyframes joinGraph {
+    from {
+    opacity: 1;
+    }
+
+    to {
+    opacity: 0;
+    transform: translateY(-400px);
+
+    }
+}
+@keyframes joinGraph2 {
+    from {
+    opacity: 1;
+    }
+
+    to {
+    opacity: 0;
+    transform: translateY(-200px);
+
+    }
+}
+.onoffswitch {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 10px;
+    background-color: #34A7C1; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 18px; margin: 6px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 56px;
+    border: 2px solid #999999; border-radius: 20px;
+    transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0;
+}
+.colorSwitch {
+    background-color: rgba(0,0,0, 0.7);
+    border: 1px solid #5BC0DE;
+}
+.button-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.modal {
+    color: #000000;
+    font-size: 30px;
+}
+.modal-body{
+    padding: 0;
+}
+.modal-content{
+    background-color: transparent;
+}
+.modal-header, .modal-footer{
+    border:0;
+}
+.modal-footer > button {
+    opacity: 0;
+    animation: 2s appearAnimation 3s forwards;
+}
+#temp, #humidity {
+    text-shadow: 2px 2px 3px #333;
+}
+#progress2 {
+  stroke-dasharray: 20;
+}
+@keyframes shine {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+#onlinePoint {
+    border: 10px solid orange;
+    border-radius: 100%;
+    animation: 1s shine infinite;
+}
+.googleChart{
+    height: 25vw;
+}
+.chart_totClass{
+    display: none;
+    opacity: 0;
+}
+#chart_tot {
+    opacity: 0;
+}
+#splitGraphsLabel > .onoffswitch-inner:before{
+    background-color: red;
+}
+p {
+    font-style: italic;
+}
