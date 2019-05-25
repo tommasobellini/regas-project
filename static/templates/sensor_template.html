@@ -75,7 +75,13 @@
           </div>
           <div class="modal-body">
              <div class="temp-section-graph" id="tempGraph">
-                <img id="tempImg" src="" width="600px">
+{#                <img id="tempImg" src="" width="600px">#}
+                  <p>Name: {{ sensor.name }}</p>
+                 <p>Version: {{ sensor.version }}</p>
+                  <p>Version: {{ sensor.max_value }}</p>
+                 <p>Max Value: {{ sensor.min_value }}</p>
+                 <p>Min Value: {{ sensor.version }}</p>
+
             </div>
           </div>
           <div class="modal-footer">
@@ -110,6 +116,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="{% static 'templates/template.js'%}"></script>
 
 </html>

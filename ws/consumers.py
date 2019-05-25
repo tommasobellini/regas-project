@@ -58,7 +58,14 @@ class CoreConsumer(AsyncWebsocketConsumer):
 
     @database_sync_to_async
     def store_data(self, text_data):
-        sensor = Sensor.objects.get_or_create(name=text_data['name'], location=text_data['location'])[0]
+        sensor_data = {}
+        sensors_info = text_data['sensor_info'].split(',')
+        sensor_data['name'] = sensors_info[0].split('=')[1]
+        sensor_data['version'] = sensors_info[1].split('=')[1]
+        sensor_data['max_value'] = int(sensors_info[2].split('=')[1].split('.')[0], base=10)
+        sensor_data['min_value'] = int(sensors_info[3].split('=')[1].split('.')[0], base=10)
+
+        sensor = Sensor.objects.get_or_create(location=text_data['location'],**sensor_data)[0]
         if sensor:
             data_dict = {}
             data_dict['humidity'] = text_data['humidity'].split('%')[0]

@@ -17,13 +17,14 @@ async def send(data):
 from datetime import datetime
 import serial
 
-ser = serial.Serial('/dev/tty.usbmodem14101', 9600)
+ser = serial.Serial('/dev/tty.usbmodem14201', 9600)
 xs = []
 ys = []
 while True:
     arduino_data = ser.readline().decode("utf-8").strip().split('|')
     temp_data = arduino_data[0]
     humidity_data = arduino_data[1]
+    sensor_info = arduino_data[2]
 
     # import datetime as dt
     # import matplotlib.pyplot as plt
@@ -65,15 +66,15 @@ while True:
                                                     datetime__second__lt=30, datetime__second__gt=10)
 
     data = {
-        'name': 'DHT22 Sensor',
         'location': "Via Dell'Innominato 11",
         'humidity': humidity_data + "%",
         'temperature': temp_data + "°C",
         'datetime': str(datetime.today().strftime("%Y-%m-%d %H:%M:%S")),
+        'sensor_info': sensor_info
         # 'temp_graph': img.decode('utf8')
     }
     import asyncio
-
+    print(data)
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     loop.run_until_complete(send(data))

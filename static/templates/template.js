@@ -23,11 +23,6 @@ chatSocket.onmessage = function(e) {
     count = Date.now();
     var data = JSON.parse(e.data);
 
-    var name_data = data['name'];
-    var online = name_data;
-    var name_elem = document.getElementById('sensorName');
-    name_elem.textContent = name_data;
-
     var humidity_data = data['humidity'];
     var temperature_data = data['temperature'];
     var datetime = data['datetime'];
@@ -159,7 +154,7 @@ chatSocket.onmessage = function(e) {
 switchButtonClick = function () {
     var switchButton = document.getElementById('myonoffswitch');
     if(switchButton.checked === true){
-        bodyTag = document.getElementsByTagName('body')[0];
+        var bodyTag = document.getElementsByTagName('body')[0];
         bodyTag.style = 'background-image: url("../media/images/background_dark.jpg") ;\n' +
             '        background-position: center;\n' +
             '        background-repeat: no-repeat; color: white;';
@@ -169,7 +164,9 @@ switchButtonClick = function () {
             colorSwitchClass[i].style = 'background-color: rgba(0,0,0, 0.7)'
         }
     } else {
-        bodyTag = document.getElementsByTagName('body')[0]
+        var menu = document.getElementsByClassName('menu-button')[0];
+        menu.style = 'background-color:transparent;'
+        var bodyTag = document.getElementsByTagName('body')[0]
         bodyTag.style = 'background-image: url("../media/images/background_white.jpg") ;\n' +
             '        background-position: center;\n' +
             '        background-repeat: no-repeat; color: #000000';
